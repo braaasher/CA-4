@@ -57,15 +57,21 @@ while True:
 
         
 # print the number of lines read
-print(len(data))
+#print(len(data))
 
-print a_commit.revision
-print a_commit.author
+#print a_commit.revision
+#print a_commit.author
         
-print(len(commits))
+#print(len(commits))
 print commits[0].author
 print commits[0].changes
 print commits[0].comment
+
+
+print commits[2].author
+print commits[2].date
+print commits[2].changes
+print commits[2].comment
 
 commits.reverse()
 
