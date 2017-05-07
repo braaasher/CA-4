@@ -3,15 +3,7 @@
 changes_file = 'changes_python.txt'
 # use strip to strip out spaces and trim the line.
 
-#my_file = open(changes_file, 'r')
-#data = my_file.readlines()
-
-#it's either or here above or below (both do same)
-
 data = [line.strip() for line in open(changes_file, 'r')]
-
-# print the number of lines read
-print(len(data))
 
 sep = 72*'-'
 
@@ -28,9 +20,6 @@ class Commit(object):
         self.comment = comment
 		
 a_commit = Commit('rr1551925', 'Thomas', '2015-11-27 16:57:44 +0000 (Fri, 27 Nov 2015)', 1, None, 'Renamed folder to the correct name')
-
-print a_commit.revision
-print a_commit.author
 
 commits = []
 #we will have list of commits once this has run
@@ -66,6 +55,13 @@ while True:
     except IndexError:
         break
 
+        
+# print the number of lines read
+print(len(data))
+
+print a_commit.revision
+print a_commit.author
+        
 print(len(commits))
 print commits[0].author
 print commits[0].changes
