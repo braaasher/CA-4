@@ -54,7 +54,8 @@ while True:
 
 print(len(commits))
 
+
 commits.reverse()
 
 for index, commit in enumerate(commits):
-    print(commit.get_commit_comment())
+    print(commit.get_commit_comment()
