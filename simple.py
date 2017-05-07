@@ -7,7 +7,6 @@ data = [line.strip() for line in open(changes_file, 'r')]
 sep = 72*'-'
 
 # create the commit class to hold each of the elements - there should be 422
-
 class Commit:
     'class for commits'
    
@@ -69,7 +68,7 @@ def get_commits(data):
         try:
             # parsing each of the commits and putting them into a list of commits
             details = data[index + 1].split('|')
-            # the author with spaces at end removed.
+            # with spaces at end removed.
             commit = {'revision': details[0].strip(),
                 'author': details[1].strip(),
                 'date': details[2].strip(),
@@ -94,12 +93,28 @@ def get_authors(data):
             if author in authors:
                 authors[author] = authors[author] + 1
             else: 
-                authors[author] = 1 
+                authors[author] = 1
                 index = data.index(sep, index + 1)
         except IndexError:
             break
     return authors
 	
+def get_date(data):
+    sep = 72*'-'
+    dates = []
+    current_commit = None
+    index = 0
+    while index < len(data):
+        try:
+            # parse each of the authors and put them into a list of authors
+            date = data[index + 1].split('|')[2].strip()
+            dates.append(date)
+            index = data.index(sep, index + 1)     
+        except IndexError:
+            break
+    return dates   
+
+    
 if __name__ == '__main__':
     # open the file - and read all of the lines.
     changes_file = 'changes_python.txt'
@@ -107,9 +122,18 @@ if __name__ == '__main__':
     commits = get_commits(data)
 
     # print the number of lines read
-    print(len(data))
+    #print(len(data))
     #print(commits)
-    print(commits[0])
+    #print(commits[0])
     print(commits[1]['author'])
-    print(len(commits))
+    print(commits[2]['author'])
+    print(commits[3]['author'])
+    print(len(commits[0]['author']))
     
+
+    
+    #print(len(commits))
+    #print(len(commits[0]['author']))
+    #print(len(commits[0]['date']))
+   # print get_date(data)
+    #print len(get_date(data))
